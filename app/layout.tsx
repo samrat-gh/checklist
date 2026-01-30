@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import { ClerkProvider } from "@clerk/nextjs";
-import { ThemeProvider } from "@/components/theme-provider";
+
+import { ConvexClientProvider } from "@/components/convex-client-provider";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -14,29 +14,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <ClerkProvider
-      appearance={{
-        elements: {
-          logo: "hidden",
-          footer: "hidden",
-          cardFooter: "hidden",
-          userButtonPopoverFooter: "hidden",
-        },
-      }}
-    >
-      <html lang="en" suppressHydrationWarning>
-        <head />
-        <body className="">
-          <ThemeProvider
-            attribute="class"
-            defaultTheme="system"
-            enableSystem
-            disableTransitionOnChange
-          >
-            {children}
-          </ThemeProvider>
-        </body>
-      </html>
-    </ClerkProvider>
+    <html lang="en" suppressHydrationWarning>
+      <head />
+      <body className="">
+        <ConvexClientProvider>{children}</ConvexClientProvider>
+      </body>
+    </html>
   );
 }

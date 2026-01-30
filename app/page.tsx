@@ -1,16 +1,15 @@
-import Login from "@/components/login";
-import { ModeToggle } from "@/components/theme-menu";
+"use client";
+
+import { useQuery } from "convex/react";
+import { api } from "../convex/_generated/api";
 
 export default function Home() {
+  const tasks = useQuery(api.task.get);
   return (
-    <div className="p-4">
-      <header className="flex items-center justify-between">
-        <h1 className="font-semibold text-xl">Expense Tracker</h1>
-        <div className="flex items-center gap-3">
-          <ModeToggle />
-          <Login />
-        </div>
-      </header>
-    </div>
+    <main className="flex min-h-screen flex-col items-center justify-between p-24">
+      {tasks?.map(({ _id, text }) => (
+        <div key={_id}>{text}</div>
+      ))}
+    </main>
   );
 }
