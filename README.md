@@ -1,68 +1,96 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Tasks
 
-## Getting Started
+A minimal personal task management app built with Next.js and Convex.
 
-First, run the development server:
+## Features
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- ✅ Create, edit, and delete tasks
+- 📁 Organize tasks with color-coded projects
+- 📅 Schedule tasks with date and time
+- ⏱️ Track time spent on tasks with built-in timer
+- 🔄 Task statuses: Open → In Progress → Closed
+- 🌙 Clean dark UI
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Self-Hosting Guide
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Prerequisites
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Authentication (Clerk)
-
-This project uses [Clerk](https://clerk.com) for authentication.
+- Node.js 18+
+- pnpm (or npm/yarn)
+- A [Convex](https://convex.dev) account (free tier available)
 
 ### Setup
 
-1. Create a Clerk application at https://dashboard.clerk.com and get your keys.
-2. Copy `.env.example` to `.env.local` and fill in the values:
+1. **Clone the repository**
 
 ```bash
-cp .env.example .env.local
+git clone <your-repo-url>
+cd checklist
 ```
 
-Required:
+2. **Install dependencies**
 
-- `NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY`
-- `CLERK_SECRET_KEY`
+```bash
+pnpm install
+```
 
-Optional (uncomment in `.env.example`):
+3. **Set up Convex**
 
-- `NEXT_PUBLIC_CLERK_SIGN_IN_URL=/sign-in`
-- `NEXT_PUBLIC_CLERK_SIGN_UP_URL=/sign-up`
-- `NEXT_PUBLIC_CLERK_AFTER_SIGN_IN_URL=/`
-- `NEXT_PUBLIC_CLERK_AFTER_SIGN_UP_URL=/`
+Create a free account at [convex.dev](https://convex.dev) and run:
 
-### Routes
+```bash
+npx convex dev
+```
 
-- Sign In: `/sign-in`
-- Sign Up: `/sign-up`
+This will:
+- Prompt you to log in to Convex
+- Create a new project (or link to existing)
+- Generate `.env.local` with your `CONVEX_DEPLOYMENT` URL
+- Start the Convex dev server
 
-All routes except `/`, `/sign-in`, and `/sign-up` are protected via `middleware.ts`.
+4. **Run the development server**
 
-## Learn More
+In a new terminal:
 
-To learn more about Next.js, take a look at the following resources:
+```bash
+pnpm dev
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+5. **Open the app**
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Visit [http://localhost:3000](http://localhost:3000)
 
-## Deploy on Vercel
+### Environment Variables
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+The only required environment variable is automatically created by Convex:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```bash
+# .env.local
+CONVEX_DEPLOYMENT=dev:your-deployment-name
+NEXT_PUBLIC_CONVEX_URL=https://your-deployment.convex.cloud
+```
+
+### Production Deployment
+
+#### Deploy to Vercel
+
+1. Push your code to GitHub
+2. Import the project in [Vercel](https://vercel.com)
+3. Add environment variables:
+   - `CONVEX_DEPLOYMENT` - Your production Convex deployment
+   - `NEXT_PUBLIC_CONVEX_URL` - Your Convex URL
+
+4. Deploy Convex to production:
+
+```bash
+npx convex deploy
+```
+
+## Tech Stack
+
+- **Framework**: [Next.js 16](https://nextjs.org)
+- **Database**: [Convex](https://convex.dev)
+- **Styling**: [Tailwind CSS](https://tailwindcss.com)
+- **UI Components**: [Shadcn UI](https://ui.shadcn.com)
+- **Icons**: [Lucide](https://lucide.dev)
+
