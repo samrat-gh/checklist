@@ -4,7 +4,7 @@ import "./globals.css";
 import { ConvexClientProvider } from "@/components/convex-client-provider";
 
 export const metadata: Metadata = {
-  title: "Tasks | Personal Task Manager",
+  title: "Checklist | Personal Task Manager",
   description: "A minimal personal task management tool",
 };
 

@@ -1,11 +1,11 @@
 "use client";
 
 import { useQuery } from "convex/react";
+import { SquareCheckBig } from "lucide-react";
 import { useState } from "react";
 import { AddTaskForm } from "@/components/add-task-form";
 import { ProjectManager } from "@/components/project-manager";
 import { TaskItem } from "@/components/task-item";
-
 import { api } from "@/convex/_generated/api";
 
 type FilterStatus = "all" | "open" | "in-progress" | "closed";
@@ -31,9 +31,12 @@ export default function Home() {
       <div className="mx-auto max-w-2xl px-4 py-8">
         {/* Header */}
         <header className="mb-8">
-          <h1 className="mb-1 font-semibold text-2xl tracking-tight">Tasks</h1>
+          <h1 className="mb-1 flex items-center font-semibold text-2xl tracking-tight">
+            <SquareCheckBig className="my-1 mr-2 inline-block" size={26} />
+            Checklist
+          </h1>
           <p className="text-muted-foreground text-sm">
-            Personal task management
+            Personal task management tool
           </p>
         </header>
 
