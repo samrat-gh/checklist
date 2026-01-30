@@ -23,6 +23,7 @@
       "recommended": true,
       "a11y": {
         "noStaticElementInteractions": "warn",
+        "noLabelWithoutControl": "warn",
         "noAriaUnsupportedElements": "warn",
         "useAltText": "warn",
         "useAriaPropsForRole": "warn",
